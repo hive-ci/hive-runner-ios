@@ -3,7 +3,7 @@ require 'device_api/ios/idevice'
 
 module Hive
   class Diagnostic
-    class Ios
+    class IOS
       class Uptime < Diagnostic
         def diagnose(data = {})
           pass('Not configured for reboot', data) unless config.key?(:reboot_timeout)
@@ -16,7 +16,7 @@ module Hive
           pass("Time for next reboot: #{config[:reboot_timeout] - uptime}s", data)
         end
 
-        def repair(_result)
+        def repair(result)
           data = {}
           Hive.logger.debug('[iOS]') { "Rebooting #{device_api.serial}" }
           begin

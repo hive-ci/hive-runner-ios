@@ -2,7 +2,7 @@ require 'hive/messages'
 
 module Hive
   module Messages
-    class IosJob < Hive::Messages::Job
+    class IOSJob < Hive::Messages::Job
       def build
         target.symbolize_keys[:build]
       end

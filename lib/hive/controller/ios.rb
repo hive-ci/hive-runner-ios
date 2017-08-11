@@ -4,13 +4,9 @@ require 'device_api/ios'
 
 module Hive
   class Controller
-    class Ios < Controller
+    class IOS < Controller
       def detect
-        if Hive.hive_mind.device_details.key? :error
-          detect_without_hivemind
-        else
-          detect_with_hivemind
-        end
+        Hive.hive_mind.device_details.key?(:error) ? detect_without_hivemind : detect_with_hivemind
       end
 
       def detect_with_hivemind
@@ -79,6 +75,7 @@ module Hive
                   serial: device.serial,
                   macs: [device.wifi_mac_address],
                   brand: 'Apple',
+                  name: device.name ? device.name : device.model,
                   model: device.model,
                   device_type: device.type.capitalize,
                   imei: device.imei,
@@ -116,6 +113,7 @@ module Hive
               'serial'       => device.serial,
               'status'       => 'idle',
               'brand'        => 'Apple',
+              'name'         => device.name ? device.name : device.model,
               'model'        => device.model,
               'os_version'   => device.version,
               'device_range' => device.device_class,
