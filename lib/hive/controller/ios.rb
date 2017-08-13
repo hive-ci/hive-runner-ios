@@ -81,6 +81,7 @@ module Hive
                   brand: 'Apple',
                   model: device.model,
                   device_type: device.type.capitalize,
+                  plugin_type: 'Mobile',
                   imei: device.imei,
                   operating_system_name: 'ios',
                   operating_system_version: device.version
