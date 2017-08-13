@@ -142,7 +142,7 @@ module Hive
 
       def get_hivemind_devices
         Hive.hive_mind.device_details['connected_devices'].select do |device|
-          (device['device_type'] == 'Mobile' || device['device_type'] == 'Tablet') && device['operating_system_name'] == 'ios'
+          device['operating_system_name'] == 'ios'
         end
       rescue NoMethodError
         # Failed to find connected devices
